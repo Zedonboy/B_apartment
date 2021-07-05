@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,18 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.hero-bg{
+  background-size: cover;
+  background-image: url(/images/hero-bg.jpg);
+}
+
+.search-input::placeholder {
+  color: white;
+}
+.faq-bg{
+  background-size: fill;
+  background-repeat: no-repeat;
+  background-image: url(/images/rectangle.png);
 }
