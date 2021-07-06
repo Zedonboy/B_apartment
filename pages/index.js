@@ -3,19 +3,24 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import FeatureCard from "../components/FeatureCard";
+import Showcase from "../components/Showcase";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  let [change, setChange] = useState(false)
   useEffect(() => {
     window.onscroll = function () {
-      if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        setChange(true)
+      if (
+        document.body.scrollTop > 200 ||
+        document.documentElement.scrollTop > 200
+      ) {
+        document.querySelector("#navbar").classList.remove("text-white")
+        document.querySelector("#navbar").classList.add("bg-white", "text-black")
+      } else  {
+        document.querySelector("#navbar").classList.remove("bg-white", "text-black")
+        document.querySelector("#navbar").classList.add("text-white")
       }
-      
-      else setChange(false)
-    }
-  }, [change])
+    };
+  }, []);
   return (
     <>
       <Head>
@@ -30,18 +35,19 @@ export default function Home() {
       <main className="flex flex-col">
         <section className="h-screen backdrop-filter backdrop-blur-lg hero-bg">
           <section className="w-full flex items-center px-2 md:px-24 filter h-full bg-black bg-opacity-90">
-            <nav className={`flex w-full z-10 px-2 md:px-24  fixed top-0 right-0 left-0 items-center py-6 justify-between ${change ? "bg-white text-black shadow" : "text-white"}`}>
-              <span>Logo</span>
-              <ul className="flex space-x-4">
-                <li className="font-bold ">
-                  <a>Create Account/Login</a>
-                </li>
-                <li className="font-bold">
-                  <a>Properties</a>
-                </li>
-                
-              </ul>
-            </nav>
+            
+              <nav id="navbar" className="flex shadow items-center justify-between w-full z-10 px-2 md:px-24 fixed top-0 right-0 left-0  py-6 text-white">
+                <span>Logo</span>
+                <ul className="flex space-x-4">
+                  <li className="font-bold ">
+                    <a>Create Account/Login</a>
+                  </li>
+                  <li className="font-bold">
+                    <a>Properties</a>
+                  </li>
+                </ul>
+              </nav>
+
             <div className="text-white">
               <p className="font-bold text-4xl">Discover your new home</p>
               <p className="mt-2">
@@ -73,16 +79,12 @@ export default function Home() {
             }}
             className="w-full px-6 overflow-auto mt-6 flex space-x-6"
           >
-            <div className="w-full md:w-1/5 flex-shrink-0 p-6">
-              <div className="filter grayscale overflow-hidden hover:grayscale-0 rounded-2xl shadow-xl duration-500 w-full ease-in-out transition-transform h-48 transform scale-100 hover:scale-125">
-                <img
-                  alt="cscs"
-                  className="w-full h-full object-cover"
-                  src="/images/nice_house.jpg"
-                ></img>
-              </div>
-            </div>
-            
+            <Showcase img_url="/images/nice_house.jpg"/>
+            <Showcase img_url="/images/nice_house1.jpg"/>
+            <Showcase img_url="/images/nice_house2.jpg"/>
+            <Showcase img_url="/images/nice_house.jpg"/>
+            <Showcase img_url="/images/nice_house2.jpg"/>
+            <Showcase img_url="/images/nice_house1.jpg"/>
           </section>
           <button className="mt-8 from-green-800 to-green-600 text-white p-4 rounded-md bg-gradient-to-tr">
             See More
@@ -104,7 +106,7 @@ export default function Home() {
                 </div>
                 <img
                   className="w-full h-full object-cover"
-                  src="/images/nice_house.jpg"
+                  src="/images/woman.png"
                 />
               </figure>
               <figure className="md:w-[350px] md:h-[337px] absolute top-0 left-0 overflow-hidden rounded-3xl shadow-2xl">
@@ -115,7 +117,7 @@ export default function Home() {
                 </div>
                 <img
                   className="w-full h-full object-cover"
-                  src="/images/nice_house.jpg"
+                  src="/images/freshama.png"
                 />
               </figure>
             </section>
@@ -181,7 +183,7 @@ export default function Home() {
               title="Capture Receipts"
               desc="We have great user interface that makes navigating accounting tasks fun and easy."
             />
-            
+
             <FeatureCard
               img_url="/images/icons/ChatIcon.png"
               title="24/7 Chat"
@@ -202,22 +204,22 @@ export default function Home() {
             </p>
             <p>Connect with us on social media </p>
             <section className="flex mt-8 space-x-4 text-white">
-            <a className="text-2xl">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a className="text-2xl">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a className="text-2xl ">
-              <i className="fab fa-youtube"></i>
-            </a>
-            <a className="text-2xl ">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a className="text-2xl">
-              <i className="far fa-envelope"></i>
-            </a>
-          </section>
+              <a className="text-2xl">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a className="text-2xl">
+                <i className="fab fa-instagram"></i>
+              </a>
+              <a className="text-2xl ">
+                <i className="fab fa-youtube"></i>
+              </a>
+              <a className="text-2xl ">
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a className="text-2xl">
+                <i className="far fa-envelope"></i>
+              </a>
+            </section>
           </section>
           <section>
             <h1 className="text-xl">Content</h1>
